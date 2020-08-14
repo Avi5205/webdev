@@ -1,3 +1,5 @@
+// For installing express, ejsand request: npm install express request ejs --save on terminal
+
 var express = require('express');
 var request = require('request');
 var app = express();
