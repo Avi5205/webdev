@@ -1,5 +1,6 @@
 var express = require('express');
 var request = require('request');
+// For installing express, ejsand request: npm install express request ejs --save
 var app = express();
 app.set("view engine", "ejs");
 
