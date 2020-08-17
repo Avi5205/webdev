@@ -2,15 +2,16 @@ var express = require("express"),
 	app = express(),
 	bodyParser = require("body-parser"),
 	methodOverride = require("method-override"),
-	expressSanitizer = require("express-sanitizer"),
-	mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/restful_blog_app', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('Connected to DB!'))
-.catch(error => console.log(error.message));
+    expressSanitizer = require("express-sanitizer");
+    
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://Avinash:<password>@cluster0.broxo.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true });
+    client.connect(err => {
+      const collection = client.db("test").collection("devices");
+      // perform actions on the collection object
+      client.close();
+    });
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
